@@ -3,7 +3,7 @@ import React from 'react'
 class Character extends React.Component {
 	render() {
 		return(
-			<div className= "col-4 mb-4">
+			<div className= "col-xl-4 col-md-6 col-sm-12 mb-4">
                 <div className="card">
                     <img className="card-img-top p-1" src={this.props.image} alt="GoT's character"/>
                     <div className="card-body">

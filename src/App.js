@@ -9,18 +9,23 @@ class App extends Component {
     super()
 
     this.state = {
-      characters: []
+      characters: [],
+      favorites: []
     }
 
   }
 
-  // Méthode
+  // Méthodes
   componentDidMount(){
     fetch("https://thronesapi.com/api/v2/Characters")
     .then(reponse => reponse.json()) 
     .then(result => { 
       this.setState({characters: result})
      });
+  }
+
+  handleFavoriteClick(){
+    
   }
 
   render() {
