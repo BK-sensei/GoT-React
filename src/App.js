@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   handleFavoriteClick(){
-    
+
   }
 
   render() {
@@ -40,6 +40,7 @@ class App extends Component {
                 name={character.fullName}
                 title={character.title}
                 image={character.imageUrl}
+                onClick={this.handleFavoriteClick}
               />
             ))}
           </div>

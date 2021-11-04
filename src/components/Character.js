@@ -9,6 +9,9 @@ class Character extends React.Component {
                     <div className="card-body">
                         <h5 className="card-title text-center fw-bold">{this.props.name}</h5>
                         <p className="card-text text-center">{this.props.title}</p>
+                        <div className="d-flex justify-content-end">
+                            <button type="button" className="btn btn-success"><i class="far fa-star"></i></button>
+                        </div>
                     </div>
                 </div>
             </div>
