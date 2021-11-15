@@ -3,16 +3,19 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 
 import Character from './components/Character';
+import Favorites from './components/Favorites';
 
 class App extends Component {
   constructor() {
     super()
 
+    // state initial
     this.state = {
       characters: [],
-      favorites: []
+      favorites: [],
+      continents: []
     }
-
+    this.handleFavoriteClick = this.handleFavoriteClick.bind(this)
   }
 
   // Méthodes
@@ -22,25 +25,39 @@ class App extends Component {
     .then(result => { 
       this.setState({characters: result})
      });
+
+    fetch("https://thronesapi.com/api/v2/Continents")
+    .then(reponse => reponse.json()) 
+    .then(result => { 
+      this.setState({continents: result})
+    });
   }
 
-  handleFavoriteClick(){
-
+  handleFavoriteClick(character){
+    this.setState({
+      favorites: [...this.state.favorites, character]
+    })
   }
 
   render() {
-    console.log(this.state);
+    const { characters, favorites } = this.state
+    
     return (
       <div>
         <h1 className="m-5 text-center text-white">Game of thrones</h1>
+        
+        <Favorites favorites={favorites}/>
+
         <div className="container">
           <div className="row">
-            {this.state.characters.map(character => (
+            {characters.map(character => (
               <Character 
+                key={``}
                 name={character.fullName}
                 title={character.title}
                 image={character.imageUrl}
-                onClick={this.handleFavoriteClick}
+                onClick={() => this.handleFavoriteClick(character)}
+                isFavorites={favorites.some(favorite => favorite.id === character.id)}
               />
             ))}
           </div>
